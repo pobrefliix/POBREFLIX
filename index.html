@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POBREFLIX</title>
+    <style>
+        body { background: #000; color: #fff; font-family: sans-serif; text-align: center; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .container { width: 90%; max-width: 400px; padding: 30px; border-radius: 30px; background: #111; border: 1px solid #333; }
+        .btn { background: #00ec5b; color: #000; border: none; padding: 20px; border-radius: 50px; font-weight: bold; cursor: pointer; width: 100%; font-size: 18px; text-transform: uppercase; }
+        #loader { display: none; margin-top: 20px; }
+        .bar { background: #222; height: 12px; border-radius: 10px; margin: 20px 0; overflow: hidden; }
+        .progress { background: #00ec5b; width: 0%; height: 100%; transition: 0.1s; }
+        video { display: none; width: 100%; border-radius: 15px; margin-top: 20px; box-shadow: 0 0 20px rgba(0,236,91,0.2); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="tela-inicial">
+        <h1 style="color:#00ec5b; margin-bottom: 5px;">Filme Liberado</h1>
+        <p style="color:#888; font-size: 14px;">Clique para iniciar o player via Premium</p>
+        <button class="btn" onclick="iniciar()">ASSISTIR AGORA</button>
+    </div>
+
+    <div id="loader">
+        <p>Conectando ao servidor de vídeo...</p>
+        <div class="bar"><div class="progress" id="p-bar"></div></div>
+    </div>
+
+    <video id="player" controls controlsList="nodownload"></video>
+</div>
+
+<script>
+    function iniciar() {
+        // ABRE SEU SMARTLINK ACTIVE
+        window.open('https://www.effectivegatecpm.com/jm5tau0c?key=ed56e2f2e3444f5c348f6e93abf58e00', '_blank');
+
+        document.getElementById('tela-inicial').style.display = 'none';
+        document.getElementById('loader').style.display = 'block';
+
+        let width = 0;
+        let pBar = document.getElementById('p-bar');
+        
+        let interval = setInterval(() => {
+            if (width >= 100) {
+                clearInterval(interval);
+                // CARREGA O VÍDEO DIRETO DO ARCHIVE
+                const player = document.getElementById('player');
+                player.src = 'https://dn710002.ca.archive.org/0/items/aperte-o-play_202409/Aperte%20o%20PLAY.mp4';
+                document.getElementById('loader').style.display = 'none';
+                player.style.display = 'block';
+                player.play();
+            } else {
+                width++;
+                pBar.style.width = width + '%';
+            }
+        }, 30); // Carrega em 3 segundos para ser rápido e converter logo
+    }
+</script>
+</body>
+</html>
